@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'recipe.dart';
 
 void main() {
   runApp(const MyApp());
@@ -62,9 +63,16 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       // 3. body has SafeArea, which keeps the app from getting too close to the operating system interfaces such as the notch or interactive areas like the Home Indicator at the bottom of some iOS screens.
       body: SafeArea(
-        // TODO: Replace child: Container()
-        // 4. SafeArea has a child widget, which is an empty Container widget.
-        child: Container(),
+        // 4. SafeArea has a child widget, Builds a list using ListView.
+        child: ListView.builder(
+          // 5. itemCount determines the number of rows the list has. In this case, length is the number of objects in the Recipe.samples list.
+          itemCount: Recipe.samples.length,
+          // 6. itemBuilder builds the widget tree for each row.
+          itemBuilder: (context, index) {
+            // 7. A Text widget displays the name of the recipe.
+            return Text(Recipe.samples[index].label);
+          },
+        ),
       ),
     );
   }
