@@ -70,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // 6. itemBuilder builds the widget tree for each row.
           itemBuilder: (context, index) {
             // 7. A Text widget displays the name of the recipe.
+            // TODO: Add GestureDetector
             return buildRecipeCard(Recipe.samples[index]);
           },
         ),
