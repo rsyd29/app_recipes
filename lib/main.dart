@@ -80,19 +80,41 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget buildRecipeCard(Recipe recipe) {
     // 1. You return a Card from buildRecipeCard().
     return Card(
-      // 2. The Card’s child property is a Column. A Column is a widget that defines a vertical layout.
-      child: Column(
-        // 3. The Column has two children.
-        children: <Widget>[
-          // 4. The first child is an Image widget. AssetImage states that the image is fetched from the local asset bundle defined in pubspec.yaml.
-          Image(
-            image: AssetImage(
-              recipe.imageUrl,
+      // A card’s elevation determines how high off the screen the card is, affecting its shadow.
+      elevation: 2.0,
+      // shape handles the shape of the card. This code defines a rounded rectangle with a 10.0 corner radius.
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      // Padding insets its child’s contents by the specified padding value.
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        // 2. The Card’s child property is a Column. A Column is a widget that defines a vertical layout.
+        child: Column(
+          // 3. The Column has two children.
+          children: <Widget>[
+            // 4. The first child is an Image widget. AssetImage states that the image is fetched from the local asset bundle defined in pubspec.yaml.
+            Image(
+              image: AssetImage(
+                recipe.imageUrl,
+              ),
             ),
-          ),
-          // 5. A Text widget is the second child. It will contain the recipe.label value.
-          Text(recipe.label),
-        ],
+            // Between the image and text is a SizedBox. This is a blank view with a fixed size.
+            const SizedBox(
+              height: 14.0,
+            ),
+            // 5. A Text widget is the second child. It will contain the recipe.label value.
+            // You can customize Text widgets with a style object. In this case, you’ve specified a Palatino font with a size of 20.0 and a bold weight of w700.
+            Text(
+              recipe.label,
+              style: const TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.w700,
+                fontFamily: 'Palatino',
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
