@@ -70,12 +70,30 @@ class _MyHomePageState extends State<MyHomePage> {
           // 6. itemBuilder builds the widget tree for each row.
           itemBuilder: (context, index) {
             // 7. A Text widget displays the name of the recipe.
-            return Text(Recipe.samples[index].label);
+            return buildRecipeCard(Recipe.samples[index]);
           },
         ),
       ),
     );
   }
 
-  // TODO: Add buildRecipeCard() here
+  Widget buildRecipeCard(Recipe recipe) {
+    // 1. You return a Card from buildRecipeCard().
+    return Card(
+      // 2. The Card’s child property is a Column. A Column is a widget that defines a vertical layout.
+      child: Column(
+        // 3. The Column has two children.
+        children: <Widget>[
+          // 4. The first child is an Image widget. AssetImage states that the image is fetched from the local asset bundle defined in pubspec.yaml.
+          Image(
+            image: AssetImage(
+              recipe.imageUrl,
+            ),
+          ),
+          // 5. A Text widget is the second child. It will contain the recipe.label value.
+          Text(recipe.label),
+        ],
+      ),
+    );
+  }
 }
